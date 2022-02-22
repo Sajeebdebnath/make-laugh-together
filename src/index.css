@@ -11,3 +11,126 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap");
+@font-face {
+  font-family: captionFont;
+  src: url(../src/assets/fonts/impact.ttf);
+  font-weight: bold;
+}
+
+.meme-sidebar {
+  background: #362418eb;
+  color: white;
+  padding: 20px 15px;
+  height: 100%;
+  text-align: center;
+}
+
+.logo-text {
+  padding-bottom: 15px;
+  border-bottom: 1px solid;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-family: "Mochiy Pop One", sans-serif;
+}
+
+.meme-template-wrapper {
+  padding: 10px;
+}
+
+.single-template {
+  margin: 3px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.single-template span {
+  position: absolute;
+  background: #000000bf;
+  font-family: captionFont;
+  width: 100%;
+  top: 0;
+  height: 35px;
+  left: 0;
+  text-align: center;
+  color: white;
+  line-height: 32px;
+  font-weight: bold;
+  -moz-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  display: block;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.single-template span.meme-bottom-caption {
+  bottom: 0;
+  top: auto;
+}
+
+.single-template:hover.single-template span {
+  opacity: 0;
+}
+.use-template {
+  position: absolute;
+  width: 70%;
+  background: #362418eb;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  text-transform: capitalize;
+  cursor: pointer;
+  margin-top: -15px;
+  margin-left: -35%;
+  -moz-transition: all 0.8s ease-in-out;
+  -webkit-transition: all 0.8s ease-in-out;
+  -ms-transition: all 0.8s ease-in-out;
+  -o-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
+  display: block;
+  opacity: 0;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 0;
+}
+
+.single-template:hover .use-template {
+  opacity: 1;
+}
+.logo-text.logo-modal {
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-weight: bold;
+}
+.meme-img {
+  padding-right: 15px;
+  margin-right: 20px;
+  border-right: 0.5px solid #8888885e;
+}
+
+.input-field {
+  margin-bottom: 15px;
+}
+
+.input-field label {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.download-btn {
+  background: #362418eb;
+  border: none;
+  color: white;
+}
+.download-btn:hover {
+  color: white;
+}

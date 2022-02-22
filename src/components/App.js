@@ -1,5 +1,12 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import Main from "./Main";
+
 function App() {
-  return <div className="App">Meme Generator App</div>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 }
 
 export default App;

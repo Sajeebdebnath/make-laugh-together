@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MemeItem from "./MemeItem";
 import MemeWorkSation from "./MemeWorkstation";
 import MemePagination from "./Pagination";
 
 const MemeTemplates = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [memeList, setMemeList] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((response) => response.json())
+      .then((response) => {
+        const { memes } = response.data;
+        setMemeList(memes);
+        console.log(memes);
+      });
+  }, []);
+
   return (
     <>
       <div className="col-lg-9 col-md-9">
@@ -14,7 +26,14 @@ const MemeTemplates = () => {
           </h3>
           <div className="meme-templates">
             <div className="row g-0">
-              <MemeItem modalOpen={modalOpen} setModalOpen={setModalOpen} />
+              {memeList.map((meme) => (
+                <MemeItem
+                  modalOpen={modalOpen}
+                  setModalOpen={setModalOpen}
+                  key={meme.id}
+                  meme={meme}
+                />
+              ))}
             </div>
           </div>
           <MemePagination />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 
-const MemeWorkstation = ({ modalOpen, setModalOpen }) => {
+const MemeWorkstation = ({ modalOpen, setModalOpen, selectMeme }) => {
   return (
     <>
       <div>
@@ -19,11 +19,7 @@ const MemeWorkstation = ({ modalOpen, setModalOpen }) => {
               <div className="row g-0">
                 <div className="col-lg-8">
                   <div className="meme-img">
-                    <img
-                      src="https://i.imgflip.com/4acd7j.png"
-                      alt=""
-                      width="100%"
-                    />
+                    <img src={selectMeme} alt="" width="100%" />
                   </div>
                 </div>
                 <div className="col-lg-4">

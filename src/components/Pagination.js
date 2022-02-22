@@ -1,15 +1,26 @@
 import React from "react";
+import { Pagination } from "react-pagination-bar";
 
-const MemePagination = () => {
+const MemePagination = ({
+  currentPage,
+  pageMemeLimit,
+  memeList,
+  setCurrentPage,
+  loading,
+}) => {
   return (
-    <div className="meme-pagination d-flex justify-content-center mt-5">
-      <nav aria-label="Page navigation example">
-        <ul className="pagination">
-          <li className="page-item">Previous</li>
-          <li className="page-item">1</li>
-          <li className="page-item">Next</li>
-        </ul>
-      </nav>
+    <div className="meme-pagination d-flex justify-content-center mt-3">
+      {loading ? (
+        "Loading"
+      ) : (
+        <Pagination
+          initialPage={currentPage}
+          itemsPerPage={pageMemeLimit}
+          onPageСhange={(pageNumber) => setCurrentPage(pageNumber)}
+          totalItems={memeList.length}
+          pageNeighbours={2}
+        />
+      )}
     </div>
   );
 };

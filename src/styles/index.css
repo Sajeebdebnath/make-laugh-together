@@ -31,8 +31,10 @@ code {
   padding-bottom: 15px;
   border-bottom: 1px solid;
   margin-bottom: 15px;
-  font-size: 20px;
+  font-size: 22px;
   font-family: "Mochiy Pop One", sans-serif;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .meme-template-wrapper {
@@ -156,6 +158,11 @@ code {
 .meme-pagination ul li {
   margin-bottom: 5px;
 }
+.rpb-item--active {
+  background-color: #241308f0;
+  box-shadow: 0px 1px 0px 1px rgb(255 255 255);
+  color: #fff;
+}
 .meme-img svg {
   width: 100%;
 }
@@ -163,6 +170,20 @@ code {
 .meme-img svg image {
   width: 100%;
 }
+.modal-header {
+  background: #241308f0;
+  color: white;
+}
+.btn-close {
+  width: 20px;
+  height: 2px;
+  color: #000;
+  background: url(https://flaticons.net/icon.php?slug_category=mobile-application&slug_icon=close);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 @media only screen and (max-width: 800px) {
   .meme-img {
     padding: 0;

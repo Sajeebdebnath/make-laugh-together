@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Draggable from "react-draggable";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 
 const MemeWorkstation = ({
@@ -40,7 +41,7 @@ const MemeWorkstation = ({
 
   const textStyle = {
     fontFamily: "captionFont",
-    fontSize: "50px",
+    fontSize: "30px",
     textTransform: "uppercase",
     fill: "#FFF",
     stroke: "#000",
@@ -81,24 +82,29 @@ const MemeWorkstation = ({
                         height={newHeight}
                         width={newWidth}
                       />
-                      <text
-                        style={textStyle}
-                        x={initialState.topX}
-                        y={initialState.topY}
-                        dominantBaseline="middle"
-                        textAnchor="middle"
-                      >
-                        {texts.topText}
-                      </text>
-                      <text
-                        style={textStyle}
-                        dominantBaseline="middle"
-                        textAnchor="middle"
-                        x={initialState.bottomX}
-                        y={initialState.bottomY}
-                      >
-                        {texts.bottomText}
-                      </text>
+                      <Draggable>
+                        <text
+                          style={textStyle}
+                          x={initialState.topX}
+                          y={initialState.topY}
+                          dominantBaseline="middle"
+                          textAnchor="middle"
+                        >
+                          {texts.topText}
+                        </text>
+                      </Draggable>
+
+                      <Draggable>
+                        <text
+                          style={textStyle}
+                          dominantBaseline="middle"
+                          textAnchor="middle"
+                          x={initialState.bottomX}
+                          y={initialState.bottomY}
+                        >
+                          {texts.bottomText}
+                        </text>
+                      </Draggable>
                     </svg>
                   </div>
                 </div>

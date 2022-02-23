@@ -156,15 +156,14 @@ code {
 .meme-pagination ul li {
   margin-bottom: 5px;
 }
+.meme-img svg {
+  width: 100%;
+}
 
+.meme-img svg image {
+  width: 100%;
+}
 @media only screen and (max-width: 800px) {
-  .meme-img svg {
-    width: 100%;
-  }
-
-  .meme-img svg image {
-    width: 100%;
-  }
   .meme-img {
     padding: 0;
     margin: 0;

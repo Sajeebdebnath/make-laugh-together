@@ -41,11 +41,12 @@ const MemeWorkstation = ({
   var newWidth = 460;
   var newHeight = newWidth / wrh;
 
+  const [textColor, setTextColor] = useState("#ffffff");
   const textStyle = {
     fontFamily: "captionFont",
     fontSize: "30px",
-    textTransform: "uppercase",
-    fill: "#FFF",
+    textTransform: "capitalize",
+    fill: textColor,
     stroke: "#000",
     userSelect: "none",
   };
@@ -55,6 +56,11 @@ const MemeWorkstation = ({
       ...texts,
       [event.target.name]: [event.target.value],
     });
+  };
+
+  const changeTextColor = (event) => {
+    event.preventDefault();
+    setTextColor(event.target.value);
   };
 
   const downloadImage = (e) => {
@@ -80,7 +86,7 @@ const MemeWorkstation = ({
           <ModalBody>
             <div className="container-fluid">
               <div className="row g-0 d-flex align-items-center">
-                <div className="col-lg-8">
+                <div className="col-lg-8 col-md-7">
                   <div className="meme-img">
                     <svg
                       width={newWidth}
@@ -131,7 +137,7 @@ const MemeWorkstation = ({
                     </svg>
                   </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-5">
                   <div className="editable-text mt-3">
                     <form action="">
                       <div className="input-field">
@@ -142,6 +148,17 @@ const MemeWorkstation = ({
                           placeholder="Top Caption"
                           accept="image/x-png,image/gif,image/jpeg"
                           onChange={handleUpload}
+                        />
+                      </div>
+                      <div className="input-field">
+                        <label for="favcolor">Change Text Color</label>
+                        <input
+                          type="color"
+                          id="favcolor"
+                          className="form-control"
+                          name="textColor"
+                          value={textColor}
+                          onChange={(event) => changeTextColor(event)}
                         />
                       </div>
                       <div className="input-field">

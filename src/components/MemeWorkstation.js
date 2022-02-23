@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Draggable from "react-draggable";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import saveSvgAsPng from "save-svg-as-png";
 
 const MemeWorkstation = ({
   modalOpen,
@@ -54,6 +55,15 @@ const MemeWorkstation = ({
       [event.target.name]: [event.target.value],
     });
   };
+
+  const downloadImage = (e) => {
+    e.preventDefault();
+    saveSvgAsPng.saveSvgAsPng(
+      document.getElementById("svg-wrapper"),
+      "meme.png"
+    );
+  };
+
   return (
     <>
       <div>
@@ -76,6 +86,7 @@ const MemeWorkstation = ({
                       height={newHeight}
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnshlink="http://www.w3.org/1999/xlink"
+                      id="svg-wrapper"
                     >
                       <image
                         xlinkHref={currentImagebase64}
@@ -143,7 +154,10 @@ const MemeWorkstation = ({
                           onChange={(event) => changeText(event)}
                         />
                       </div>
-                      <button className="btn download-btn">
+                      <button
+                        className="btn download-btn"
+                        onClick={downloadImage}
+                      >
                         Download Meme
                       </button>
                     </form>

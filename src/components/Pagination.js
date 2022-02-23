@@ -18,7 +18,7 @@ const MemePagination = ({
           itemsPerPage={pageMemeLimit}
           onPageСhange={(pageNumber) => setCurrentPage(pageNumber)}
           totalItems={memeList.length}
-          pageNeighbours={2}
+          pageNeighbours={1}
         />
       )}
     </div>

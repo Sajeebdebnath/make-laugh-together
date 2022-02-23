@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Loader from "./Loader";
 import MemeItem from "./MemeItem";
 import MemeWorkSation from "./MemeWorkstation";
 import MemePagination from "./Pagination";
@@ -19,8 +20,7 @@ const MemeTemplates = () => {
       const response = await axios.get("https://api.imgflip.com/get_memes");
       const raw = response.data;
       const { memes } = raw.data;
-      setMemeList(memes);
-
+      setMemeList(memes.sort(() => Math.random() - 0.5));
       setLoading(false);
     };
 
@@ -78,7 +78,7 @@ const MemeTemplates = () => {
           <div className="meme-templates">
             <div className="row g-0">
               {loading ? (
-                "Loading"
+                <Loader />
               ) : (
                 <>
                   {memeList

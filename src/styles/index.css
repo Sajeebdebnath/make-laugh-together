@@ -14,16 +14,17 @@ code {
 @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap");
 @font-face {
   font-family: captionFont;
-  src: url(../src/assets/fonts/impact.ttf);
+  src: url(../../src/assets/fonts/impact.ttf);
   font-weight: bold;
 }
 
 .meme-sidebar {
-  background: #362418eb;
+  background: #241308f0;
   color: white;
   padding: 20px 15px;
   height: 100%;
   text-align: center;
+  position: relative;
 }
 
 .logo-text {
@@ -44,6 +45,8 @@ code {
   cursor: pointer;
   transition: 0.3s;
   overflow: hidden;
+  border: 0.3px solid #00000040;
+  border-radius: 5px;
 }
 
 .single-template span {
@@ -79,7 +82,7 @@ code {
 .use-template {
   position: absolute;
   width: 70%;
-  background: #362418eb;
+  background: #241308f0;
   color: white;
   font-weight: bold;
   text-align: center;
@@ -127,7 +130,7 @@ code {
   margin-bottom: 5px;
 }
 .download-btn {
-  background: #362418eb;
+  background: #241308f0;
   border: none;
   color: white;
 }
@@ -135,6 +138,39 @@ code {
   color: white;
 }
 .meme-pagination {
-  background: #46352a;
+  background: #241308f0;
   padding: 10px 0px;
+}
+.copyright {
+  position: absolute;
+  bottom: 4%;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+
+.sidebar-text {
+  margin-bottom: 50px;
+}
+.meme-pagination ul li {
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+  .meme-img svg {
+    width: 100%;
+  }
+
+  .meme-img svg image {
+    width: 100%;
+  }
+  .meme-img {
+    padding: 0;
+    margin: 0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border: 0px;
+    border-bottom: 0.5px solid #8888885e;
+  }
 }

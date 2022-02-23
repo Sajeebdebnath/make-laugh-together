@@ -8,10 +8,21 @@ const MemeSidebar = () => {
         <div className="sidebar-text">
           <p>This is a fun project inspiration from Internet.</p>
           <p>
-            Firstly, You have choose a template, then add top & bottom text,
-            move around with frankly. You can save image to click on Download
-            meme button.
+            Firstly, You have choose a template or upload your own meme, then
+            add top & bottom text, move text around with randomly. You can save
+            image to click on Download meme button.
           </p>
+          <div className="copyright">
+            Made by{" "}
+            <a
+              target={"_blank"}
+              href="https://www.facebook.com/sajeebdebnath.cse"
+              rel="noreferrer"
+            >
+              Sajeeb Debnath
+            </a>{" "}
+            with ❤
+          </div>
         </div>
       </div>
     </div>

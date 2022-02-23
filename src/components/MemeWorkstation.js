@@ -10,16 +10,17 @@ const MemeWorkstation = ({
   handleUpload,
   currentImagebase64,
 }) => {
-  const [initialState, setInitialState] = useState({
-    topDragging: false,
-    botomDragging: false,
+  const initialState = {
     topY: "10%",
     topX: "50%",
+    centerY: "50%",
+    centerX: "50%",
     bottomX: "50%",
     bottomY: "90%",
-  });
+  };
   const [texts, setTexts] = useState({
     topText: "",
+    centerText: "",
     bottomText: "",
   });
   const [imageWidth, setImageWidth] = useState();
@@ -78,7 +79,7 @@ const MemeWorkstation = ({
           </ModalHeader>
           <ModalBody>
             <div className="container-fluid">
-              <div className="row g-0">
+              <div className="row g-0 d-flex align-items-center">
                 <div className="col-lg-8">
                   <div className="meme-img">
                     <svg
@@ -104,6 +105,17 @@ const MemeWorkstation = ({
                           {texts.topText}
                         </text>
                       </Draggable>
+                      <Draggable>
+                        <text
+                          style={textStyle}
+                          x={initialState.centerX}
+                          y={initialState.centerX}
+                          dominantBaseline="middle"
+                          textAnchor="middle"
+                        >
+                          {texts.centerText}
+                        </text>
+                      </Draggable>
 
                       <Draggable>
                         <text
@@ -120,10 +132,10 @@ const MemeWorkstation = ({
                   </div>
                 </div>
                 <div className="col-lg-4">
-                  <div className="editable-text mt-5">
+                  <div className="editable-text mt-3">
                     <form action="">
                       <div className="input-field">
-                        <label for="">Use Your Own Meme</label>
+                        <label for="">Use Your Own Meme (optional)</label>
                         <input
                           type="file"
                           className="form-control"
@@ -140,6 +152,17 @@ const MemeWorkstation = ({
                           placeholder="Top Caption"
                           name="topText"
                           value={texts.topText}
+                          onChange={(event) => changeText(event)}
+                        />
+                      </div>
+                      <div className="input-field">
+                        <label for="">Center Text (optional)</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Center Caption"
+                          name="centerText"
+                          value={texts.centerText}
                           onChange={(event) => changeText(event)}
                         />
                       </div>

@@ -1,7 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 
-const MemeWorkstation = ({ modalOpen, setModalOpen, selectMeme }) => {
+const MemeWorkstation = ({
+  modalOpen,
+  setModalOpen,
+  selectMeme,
+  handleUpload,
+  currentImagebase64,
+}) => {
+  const [initialState, setInitialState] = useState({
+    topDragging: false,
+    botomDragging: false,
+    topY: "10%",
+    topX: "50%",
+    bottomX: "50%",
+    bottomY: "90%",
+  });
+  const [texts, setTexts] = useState({
+    topText: "",
+    bottomText: "",
+  });
+  const [imageWidth, setImageWidth] = useState();
+  const [imageHeigth, setImageHeigth] = useState();
+  function getMeta(url, callback) {
+    var img = new Image();
+    img.src = url;
+    img.onload = function () {
+      callback(this.width, this.height);
+    };
+  }
+  getMeta(selectMeme, function (width, height) {
+    setImageHeigth(height);
+    setImageWidth(width);
+  });
+
+  var wrh = imageWidth / imageHeigth;
+  var newWidth = 460;
+  var newHeight = newWidth / wrh;
+
+  const textStyle = {
+    fontFamily: "captionFont",
+    fontSize: "50px",
+    textTransform: "uppercase",
+    fill: "#FFF",
+    stroke: "#000",
+    userSelect: "none",
+  };
+  const changeText = (event) => {
+    event.preventDefault();
+    setTexts({
+      ...texts,
+      [event.target.name]: [event.target.value],
+    });
+  };
   return (
     <>
       <div>
@@ -12,14 +63,43 @@ const MemeWorkstation = ({ modalOpen, setModalOpen, selectMeme }) => {
           isOpen={modalOpen}
         >
           <ModalHeader toggle={() => setModalOpen(!modalOpen)}>
-            <div class="logo-text logo-modal">Make-Laugh-Together</div>
+            <div className="logo-text logo-modal">Make-Laugh-Together</div>
           </ModalHeader>
           <ModalBody>
             <div className="container-fluid">
               <div className="row g-0">
                 <div className="col-lg-8">
                   <div className="meme-img">
-                    <img src={selectMeme} alt="" width="100%" />
+                    <svg
+                      width={newWidth}
+                      height={newHeight}
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlnshlink="http://www.w3.org/1999/xlink"
+                    >
+                      <image
+                        xlinkHref={currentImagebase64}
+                        height={newHeight}
+                        width={newWidth}
+                      />
+                      <text
+                        style={textStyle}
+                        x={initialState.topX}
+                        y={initialState.topY}
+                        dominantBaseline="middle"
+                        textAnchor="middle"
+                      >
+                        {texts.topText}
+                      </text>
+                      <text
+                        style={textStyle}
+                        dominantBaseline="middle"
+                        textAnchor="middle"
+                        x={initialState.bottomX}
+                        y={initialState.bottomY}
+                      >
+                        {texts.bottomText}
+                      </text>
+                    </svg>
                   </div>
                 </div>
                 <div className="col-lg-4">
@@ -31,6 +111,8 @@ const MemeWorkstation = ({ modalOpen, setModalOpen, selectMeme }) => {
                           type="file"
                           className="form-control"
                           placeholder="Top Caption"
+                          accept="image/x-png,image/gif,image/jpeg"
+                          onChange={handleUpload}
                         />
                       </div>
                       <div className="input-field">
@@ -39,6 +121,9 @@ const MemeWorkstation = ({ modalOpen, setModalOpen, selectMeme }) => {
                           type="text"
                           className="form-control"
                           placeholder="Top Caption"
+                          name="topText"
+                          value={texts.topText}
+                          onChange={(event) => changeText(event)}
                         />
                       </div>
                       <div className="input-field">
@@ -47,6 +132,9 @@ const MemeWorkstation = ({ modalOpen, setModalOpen, selectMeme }) => {
                           type="text"
                           className="form-control"
                           placeholder="Bottom Caption"
+                          name="bottomText"
+                          value={texts.bottomText}
+                          onChange={(event) => changeText(event)}
                         />
                       </div>
                       <button className="btn download-btn">
